@@ -18,12 +18,15 @@
 
 set -euo pipefail
 
+# Get the installed versions of Buildarr and pre-packaged plugins.
+. /versions.sh
+
 # Install packages defined in $BUILDARR_INSTALL_PACKAGES.
 # The Buildarr version pin needs to be updated every new release.
 if [ -n "$BUILDARR_INSTALL_PACKAGES" ]
 then
     echo "Pre-installing the following packages: $BUILDARR_INSTALL_PACKAGES"
-    python -m pip install --no-cache-dir buildarr==0.1.0 $BUILDARR_INSTALL_PACKAGES
+    python -m pip install --no-cache-dir "buildarr==${BUILDARR_VERSION}" $BUILDARR_INSTALL_PACKAGES
 fi
 
 # Create the Buildarr user with the configured UID/GID.
