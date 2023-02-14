@@ -33,7 +33,7 @@ ENV BUILDARR_INSTALL_PACKAGES=
 # Mark the Buildarr configuration folder as an external volume mount point.
 VOLUME ["/config"]
 
-# Copy necessary files into the
+# Copy the container bootstrap script into the image.
 COPY bootstrap.sh /bootstrap.sh
 
 # Run the image setup script.
