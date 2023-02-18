@@ -28,4 +28,5 @@ jobs:
           push: true
           tags: |
             callum027/buildarr:0.1.1
+            callum027/buildarr:0.1
             callum027/buildarr:latest
