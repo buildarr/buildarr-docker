@@ -28,6 +28,7 @@ jobs:
             BUILDARR_SONARR_VERSION=0.4.0
           push: true
           tags: |
+            callum027/buildarr:0.4.0-sonarr0.4.0
             callum027/buildarr:0.4.0
             callum027/buildarr:0.4
             callum027/buildarr:latest
