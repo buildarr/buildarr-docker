@@ -40,6 +40,7 @@ COPY bootstrap.sh /bootstrap.sh
 # Run the image setup script.
 RUN apk add su-exec tzdata && \
     echo "export BUILDARR_VERSION=${BUILDARR_VERSION}" > /versions.sh && \
+    echo "export BUILDARR_SONARR_VERSION=${BUILDARR_SONARR_VERSION}" >> /versions.sh && \
     chmod +x /bootstrap.sh /versions.sh && \
     python -m pip install --no-cache-dir "buildarr==${BUILDARR_VERSION}" \
                                          "buildarr-sonarr==${BUILDARR_SONARR_VERSION}"

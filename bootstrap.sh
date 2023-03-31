@@ -26,7 +26,9 @@ set -euo pipefail
 if [ -n "$BUILDARR_INSTALL_PACKAGES" ]
 then
     echo "Pre-installing the following packages: $BUILDARR_INSTALL_PACKAGES"
-    python -m pip install --no-cache-dir "buildarr==${BUILDARR_VERSION}" $BUILDARR_INSTALL_PACKAGES
+    python -m pip install --no-cache-dir "buildarr==${BUILDARR_VERSION}" \
+                                         "buildarr-sonarr==${BUILDARR_SONARR_VERSION}" \
+                                         $BUILDARR_INSTALL_PACKAGES
 fi
 
 # Create the Buildarr user with the configured UID/GID.
