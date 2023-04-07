@@ -19,6 +19,7 @@ FROM python:3.11-alpine
 # Version of Buildarr and vendored plugins to install in the Docker container.
 ARG BUILDARR_VERSION
 ARG BUILDARR_SONARR_VERSION
+ARG BUILDARR_PROWLARR_VERSION
 
 # Ensure stdout/stderr writes straight through to the Docker logs without buffering.
 ENV PYTHONUNBUFFERED=1
@@ -39,11 +40,13 @@ COPY bootstrap.sh /bootstrap.sh
 
 # Run the image setup script.
 RUN apk add su-exec tzdata && \
-    echo "export BUILDARR_VERSION=${BUILDARR_VERSION}" > /versions.sh && \
-    echo "export BUILDARR_SONARR_VERSION=${BUILDARR_SONARR_VERSION}" >> /versions.sh && \
+    echo "export BUILDARR_VERSION=\${BUILDARR_VERSION:-${BUILDARR_VERSION}}" > /versions.sh && \
+    echo "export BUILDARR_SONARR_VERSION=\${BUILDARR_SONARR_VERISON:-${BUILDARR_SONARR_VERSION}}" >> /versions.sh && \
+    echo "export BUILDARR_PROWLARR_VERSION=\${BUILDARR_PROWLARR_VERISON:-${BUILDARR_PROWLARR_VERSION}}" >> /versions.sh && \
     chmod +x /bootstrap.sh /versions.sh && \
     python -m pip install --no-cache-dir "buildarr==${BUILDARR_VERSION}" \
-                                         "buildarr-sonarr==${BUILDARR_SONARR_VERSION}"
+                                         "buildarr-sonarr==${BUILDARR_SONARR_VERSION}" \
+                                         "buildarr-prowlarr==${BUILDARR_PROWLARR_VERSION}"
 
 # Set the Buildarr configuration folder as the default Docker container working folder.
 WORKDIR /config
