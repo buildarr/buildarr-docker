@@ -28,6 +28,7 @@ then
     echo "Pre-installing the following packages: $BUILDARR_INSTALL_PACKAGES"
     python -m pip install --no-cache-dir "buildarr==${BUILDARR_VERSION}" \
                                          "buildarr-sonarr==${BUILDARR_SONARR_VERSION}" \
+                                         "buildarr-prowlarr==${BUILDARR_PROWLARR_VERSION}" \
                                          $BUILDARR_INSTALL_PACKAGES
 fi
 
@@ -37,5 +38,6 @@ delgroup buildarr 2> /dev/null || true
 addgroup -S -g $PGID buildarr
 adduser -S -s /bin/sh -g buildarr -u $PUID buildarr
 
-# Start Buildarr under the Buildarr user.
-su-exec buildarr:buildarr buildarr "$@"
+# Start Buildarr under the Buildarr user, and replace the bootstrap shell
+# with the Buildarr process as PID 1.
+exec su-exec buildarr:buildarr buildarr "$@"
