@@ -32,6 +32,8 @@ then
 fi
 
 # Create the Buildarr user with the configured UID/GID.
+deluser buildarr 2> /dev/null || true
+delgroup buildarr 2> /dev/null || true
 addgroup -S -g $PGID buildarr
 adduser -S -s /bin/sh -g buildarr -u $PUID buildarr
 
