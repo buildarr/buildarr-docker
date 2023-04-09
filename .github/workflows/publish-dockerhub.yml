@@ -24,11 +24,11 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           build-args: |
-            BUILDARR_VERSION=0.4.0
+            BUILDARR_VERSION=0.4.1
             BUILDARR_SONARR_VERSION=0.4.1
             BUILDARR_PROWLARR_VERSION=0.1.1
           push: true
           tags: |
-            callum027/buildarr:0.4.2
+            callum027/buildarr:0.4.3
             callum027/buildarr:0.4
             callum027/buildarr:latest
