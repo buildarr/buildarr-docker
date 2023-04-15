@@ -28,7 +28,8 @@ then
     echo "Pre-installing the following packages: $BUILDARR_INSTALL_PACKAGES"
     python -m pip install --no-cache-dir "buildarr==${BUILDARR_VERSION}" \
                                          "buildarr-sonarr==${BUILDARR_SONARR_VERSION}" \
-                                         "buildarr-prowlarr==${BUILDARR_PROWLARR_VERSION}" \
+                                         "buildarr-prowlarr[sonarr]==${BUILDARR_PROWLARR_VERSION}" \
+                                         "buildarr-jellyseerr[sonarr]==${BUILDARR_JELLYSEERR_VERSION}" \
                                          $BUILDARR_INSTALL_PACKAGES
 fi
 
