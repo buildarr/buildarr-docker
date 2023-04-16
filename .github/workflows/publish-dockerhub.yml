@@ -20,16 +20,16 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push Buildarr v0.4
+      - name: Build and push Buildarr v0.5
         uses: docker/build-push-action@v4
         with:
           build-args: |
-            BUILDARR_VERSION=0.4.2
-            BUILDARR_SONARR_VERSION=0.4.1
-            BUILDARR_PROWLARR_VERSION=0.1.1
+            BUILDARR_VERSION=0.5.0
+            BUILDARR_SONARR_VERSION=0.5.0
+            BUILDARR_PROWLARR_VERSION=0.2.0
             BUILDARR_JELLYSEERR_VERSION=0.1.0
           push: true
           tags: |
-            callum027/buildarr:0.4.5
-            callum027/buildarr:0.4
+            callum027/buildarr:0.5.0
+            callum027/buildarr:0.5
             callum027/buildarr:latest
