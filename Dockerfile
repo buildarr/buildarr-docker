@@ -43,13 +43,15 @@ COPY bootstrap.sh /bootstrap.sh
 RUN apk add su-exec tzdata && \
     echo "export BUILDARR_VERSION=\${BUILDARR_VERSION:-${BUILDARR_VERSION}}" > /versions.sh && \
     echo "export BUILDARR_SONARR_VERSION=\${BUILDARR_SONARR_VERSION:-${BUILDARR_SONARR_VERSION}}" >> /versions.sh && \
+    echo "export BUILDARR_RADARR_VERSION=\${BUILDARR_RADARR_VERSION:-${BUILDARR_RADARR_VERSION}}" >> /versions.sh && \
     echo "export BUILDARR_PROWLARR_VERSION=\${BUILDARR_PROWLARR_VERSION:-${BUILDARR_PROWLARR_VERSION}}" >> /versions.sh && \
     echo "export BUILDARR_JELLYSEERR_VERSION=\${BUILDARR_JELLYSEERR_VERSION:-${BUILDARR_JELLYSEERR_VERSION}}" >> /versions.sh && \
     chmod +x /bootstrap.sh /versions.sh && \
     python -m pip install --no-cache-dir "buildarr==${BUILDARR_VERSION}" \
                                          "buildarr-sonarr==${BUILDARR_SONARR_VERSION}" \
-                                         "buildarr-prowlarr[sonarr]==${BUILDARR_PROWLARR_VERSION}" \
-                                         "buildarr-jellyseerr[sonarr]==${BUILDARR_JELLYSEERR_VERSION}"
+                                         "buildarr-radarr==${BUILDARR_RADARR_VERSION}" \
+                                         "buildarr-prowlarr[sonarr,radarr]==${BUILDARR_PROWLARR_VERSION}" \
+                                         "buildarr-jellyseerr[sonarr,radarr]==${BUILDARR_JELLYSEERR_VERSION}"
 
 # Set the Buildarr configuration folder as the default Docker container working folder.
 WORKDIR /config
