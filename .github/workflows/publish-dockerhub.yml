@@ -11,13 +11,6 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        platform:
-          - linux/amd64
-          - linux/arm/v7
-          - linux/arm64/v8
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -31,7 +24,7 @@ jobs:
       - name: Build and push Buildarr v0.7
         uses: docker/build-push-action@v5
         with:
-          platforms: ${{ matrix.platform }}
+          platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
           build-args: |
             BUILDARR_VERSION=0.7.1
             BUILDARR_SONARR_VERSION=0.6.1
