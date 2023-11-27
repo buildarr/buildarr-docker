@@ -28,11 +28,11 @@ jobs:
           build-args: |
             BUILDARR_VERSION=0.7.1
             BUILDARR_SONARR_VERSION=0.6.1
-            BUILDARR_RADARR_VERSION=0.2.1
+            BUILDARR_RADARR_VERSION=0.2.2
             BUILDARR_PROWLARR_VERSION=0.5.0
             BUILDARR_JELLYSEERR_VERSION=0.3.0
           push: true
           tags: |
-            callum027/buildarr:0.7.1
+            callum027/buildarr:0.7.2
             callum027/buildarr:0.7
             callum027/buildarr:latest
