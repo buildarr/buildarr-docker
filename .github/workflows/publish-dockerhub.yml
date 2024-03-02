@@ -27,12 +27,12 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
           build-args: |
             BUILDARR_VERSION=0.7.1
-            BUILDARR_SONARR_VERSION=0.6.3
-            BUILDARR_RADARR_VERSION=0.2.4
+            BUILDARR_SONARR_VERSION=0.6.4
+            BUILDARR_RADARR_VERSION=0.2.5
             BUILDARR_PROWLARR_VERSION=0.5.1
-            BUILDARR_JELLYSEERR_VERSION=0.3.1
+            BUILDARR_JELLYSEERR_VERSION=0.3.2
           push: true
           tags: |
-            callum027/buildarr:0.7.5
+            callum027/buildarr:0.7.6
             callum027/buildarr:0.7
             callum027/buildarr:latest
