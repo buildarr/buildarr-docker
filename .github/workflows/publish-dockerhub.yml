@@ -33,6 +33,6 @@ jobs:
             BUILDARR_JELLYSEERR_VERSION=0.3.2
           push: true
           tags: |
-            callum027/buildarr:0.7.9
+            callum027/buildarr:0.7.8
             callum027/buildarr:0.7
             callum027/buildarr:latest
